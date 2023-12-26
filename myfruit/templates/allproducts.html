@@ -1,0 +1,85 @@
+
+{% extends 'base.html' %}
+{% block body %}
+	
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+	
+	
+
+	
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Fresh and Organic</p>
+						<h1>Shop</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- products -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+
+			<div class="row">
+                
+                
+                    
+                
+                    
+                <div class="col-md-12">
+                    <div class="product-filters">
+                        <ul>
+                            <a href="/allproduct/"><li>All Products</li></a>
+                            {% for cats in all_categories %}
+                            
+                            <a href="/allproduct/?catesid={{cats.id}}" value="{{cats.id}}"><li>{{cats.name}}</li></a>
+                            
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+
+			<div class="row product-lists">
+                {% for i in all_products %}
+				<div class="col-lg-4 col-md-6 text-center strawberry">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{i.image.url}}" style="height:200px" alt=""></a>
+						</div>
+						<h3>{{i.name}}</h3>
+						<p class="product-price"><span>Per Kg</span> ₹{{i.sell_price}} <br/>Discount: {{i.discount}}%</p>
+						<a href="/addtocart/{{i.id}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                        <a href="/addwish/{{i.id}}" class="cart-btn"><i class="fas	 fa-heart"></i> Add to Wishlist</a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+
+			
+		</div>
+	</div>
+	<!-- end products -->
+
+	
+{% endblock body %}
+	
+	
+	
+	
+	
+
+
